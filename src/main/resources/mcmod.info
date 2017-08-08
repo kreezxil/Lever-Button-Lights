@@ -1,0 +1,16 @@
+[
+{
+  "modid": "leverbuttonlights",
+  "name": "Lever & Button Lights",
+  "description": "Levers that lights and buttons that flash.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Kreezxil"],
+  "credits": "MMD on DISCORD",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
