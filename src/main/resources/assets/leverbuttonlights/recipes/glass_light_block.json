@@ -1,0 +1,20 @@
+{
+    "type": "forge:ore_shaped",
+     "pattern": [
+        "t",
+        "g"
+     ],
+     "key": {
+        "t": {
+            "item": "minecraft:torch"
+         },
+         "g": {
+            "item": "minecraft:glass"
+         }
+     },
+    "result": {
+        "item": "leverbuttonlights:glass_light_block",
+        "count": 1
+     }
+ 
+}

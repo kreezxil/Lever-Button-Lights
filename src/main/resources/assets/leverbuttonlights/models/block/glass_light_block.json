@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+            "top": "leverbuttonlights:blocks/glass",
+            "bottom": "leverbuttonlights:blocks/glass",
+            "side": "leverbuttonlights:blocks/glass"
+    }
+}
