@@ -14,7 +14,7 @@ public class InitBlocks {
 	   	
 	public static final GlassLever GLASS_LEVER = new GlassLever("glass_lever");
 	public static final GlassLever GLASS_LIGHT_BLOCK = new GlassLever("glass_light_block");
-	public static final GlassButton GLASS_BUTTON = new GlassButton("glass_button").setInterval(20);
+	public static final GlassButton GLASS_BUTTON = new GlassButton("glass_button");
 //	public static final GlassLever GLASS_BLACK_LEVER = new GlassLever("glass_black_lever");
 //	public static final GlassLever GLASS_BLUE_LEVER = new GlassLever("glass_blue_lever");
 //	public static final GlassLever GLASS_BROWN_LEVER = new GlassLever("glass_brown_lever");

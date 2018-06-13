@@ -7,29 +7,29 @@ import com.kreezcraft.leverbuttonlights.client.IHasModel;
 import com.kreezcraft.leverbuttonlights.items.InitItems;
 
 import net.minecraft.block.BlockButtonStone;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class GlassButton extends BlockButtonStone implements IHasModel {
 	
 	protected String name;
 	protected boolean lightState;
-	protected int interval;
-	protected int counter;
 	
 	public GlassButton(String name) {
 		super();
-		this.counter=0;
 		this.name = name;
 		this.lightState = true;
 		setTickRandomly(true);
@@ -41,71 +41,22 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 		InitItems.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
 	}
 
-	public GlassButton setInterval(int ticks) {
-		this.interval = ticks;
-		return this;
-	}
-	
 	@Override
+	public boolean canProvidePower(IBlockState state) {
+		return !this.lightState;
+	}
+
+		@Override
 	public void registerModels() {
 		LeverButtonLights.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 
 	@Override
 	public int getLightValue(IBlockState state) {
-		if(this.counter<this.interval) {
-			return 15;
-		}
-		return 0;
+		return this.lightState ? 15 : 0;
 	}
 	
-	//don't ask why, just explain what I did wrong
-	/*
-	 * What I'm trying to do.
-	 * 
-	 * this object on creation is passed an int value to setInterval.
-	 * This number is used to control flashing effect.
-	 * 
-	 * The object has a counter that is incremented each time the getLightValue is accessed
-	 * If the counter value is higher than the interval multiplied by 2 then we reset it to 0
-	 * the interval gives us x amount of on ticks and x amount of off ticks
-	 * if the counter is value 0 to interval then the light state is on, or here 15 is returned
-	 * if the counter is value of interval thru to interval multiplied by 2 then it is off
-	 * and 0 is returned.
-	 * 
-	 * this does not work as intended.
-	 * 
-	 * I was told to use blockstates or rather go back the true false state I used two days ago.
-	 * the said it goes in the updatetick, but that wasn't updating. They suggest scheduling the update, which 
-	 * I tried but probably didn't integrate correctly.
-	 * 
-	 * so probably in the blockplaced event I'll start a schedule and then keep it scheduled in update tick.
-	 * 
-	 * Personally I think the counter is the way to go, however I have to get to actually change the light
-	 * when we're in the off phase of counter.
-	 * 
-	 * 
-	 * 
-	 */
-	@Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-		int myass=2;
-		if(myass==1) return;
-        if (!worldIn.isRemote)
-        {
-    		if(this.counter>this.interval * 2) {
-    			this.counter=0;
-    		}
-    		this.counter++;
-        }
-        LeverButtonLights.logger.info("Counter is "+this.counter);
-    	super.updateTick(worldIn, pos, state, rand);
-
-    }
-
-    //player.sendStatusMessage(new TextComponentTranslation(Chococraft.MODID + ".entity_chocobo.tame_success"), true);
-    
+	
     private void notifyNeighbors(World worldIn, BlockPos pos, EnumFacing facing)
     {
         worldIn.notifyNeighborsOfStateChange(pos, this, false);
@@ -132,8 +83,18 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 		return false;
 	}
 
-
-	//Minecraft.getMinecraft().effectRenderer.addEffect(new YourParticle())
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (!worldIn.isRemote)
+        {
+            if (state.getValue(POWERED))
+            {
+                setLightLevel(15f);
+            } else {
+            	setLightLevel(0f);
+            }
+        }
+    }
 	
 
 }
