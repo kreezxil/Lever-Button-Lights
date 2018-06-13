@@ -24,10 +24,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class GlassButton extends BlockButtonStone implements IHasModel {
-	
+
 	protected String name;
 	protected boolean lightState;
-	
+
 	public GlassButton(String name) {
 		super();
 		this.name = name;
@@ -35,7 +35,7 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 		setTickRandomly(true);
 		setLightOpacity(0);
 		setUnlocalizedName(LeverButtonLights.MODID + "." + name);
-		setCreativeTab(CreativeTabs.REDSTONE);
+		setCreativeTab(LeverButtonLights.creativeTab);
 		setRegistryName(name);
 		InitBlocks.BLOCKS.add(this);
 		InitItems.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));
@@ -46,7 +46,7 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 		return !this.lightState;
 	}
 
-		@Override
+	@Override
 	public void registerModels() {
 		LeverButtonLights.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
@@ -55,24 +55,22 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 	public int getLightValue(IBlockState state) {
 		return this.lightState ? 15 : 0;
 	}
-	
-	
-    private void notifyNeighbors(World worldIn, BlockPos pos, EnumFacing facing)
-    {
-        worldIn.notifyNeighborsOfStateChange(pos, this, false);
-        worldIn.notifyNeighborsOfStateChange(pos.offset(facing.getOpposite()), this, false);
-    }
 
-    @Override
+	private void notifyNeighbors(World worldIn, BlockPos pos, EnumFacing facing) {
+		worldIn.notifyNeighborsOfStateChange(pos, this, false);
+		worldIn.notifyNeighborsOfStateChange(pos.offset(facing.getOpposite()), this, false);
+	}
+
+	@Override
 	protected void playClickSound(EntityPlayer player, World worldIn, BlockPos pos) {
-	      worldIn.playSound(player, pos, SoundEvents.BLOCK_GLASS_HIT, SoundCategory.BLOCKS, 0.3F, 0.6F);
+		worldIn.playSound(player, pos, SoundEvents.BLOCK_GLASS_HIT, SoundCategory.BLOCKS, 0.3F, 0.6F);
 	}
 
 	@Override
 	protected void playReleaseSound(World worldIn, BlockPos pos) {
-          worldIn.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_GLASS_PLACE, SoundCategory.BLOCKS, 0.3F, 0.5F);
+		worldIn.playSound((EntityPlayer) null, pos, SoundEvents.BLOCK_GLASS_PLACE, SoundCategory.BLOCKS, 0.3F, 0.5F);
 	}
-	
+
 	@Override
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
@@ -83,19 +81,14 @@ public class GlassButton extends BlockButtonStone implements IHasModel {
 		return false;
 	}
 
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        if (!worldIn.isRemote)
-        {
-            if (state.getValue(POWERED))
-            {
-                setLightLevel(15f);
-            } else {
-            	setLightLevel(0f);
-            }
-        }
-    }
-	
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		if (!worldIn.isRemote) {
+			if (state.getValue(POWERED)) {
+				setLightLevel(15f);
+			} else {
+				setLightLevel(0f);
+			}
+		}
+	}
 
 }
-

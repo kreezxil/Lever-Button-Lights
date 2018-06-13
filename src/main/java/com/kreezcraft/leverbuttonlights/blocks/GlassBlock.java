@@ -34,7 +34,7 @@ public class GlassBlock extends GlassLever implements IHasModel {
 		setLightOpacity(0);
 		this.name = name;
 		setUnlocalizedName(LeverButtonLights.MODID + "." + name);
-		setCreativeTab(CreativeTabs.REDSTONE);
+		setCreativeTab(LeverButtonLights.creativeTab);
 		setRegistryName(name);
 		InitBlocks.BLOCKS.add(this);
 		InitItems.ITEMS.add(new ItemBlock(this).setRegistryName(getRegistryName()));

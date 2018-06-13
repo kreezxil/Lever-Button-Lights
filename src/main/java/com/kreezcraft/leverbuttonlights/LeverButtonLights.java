@@ -36,7 +36,8 @@ public class LeverButtonLights
     
     @Mod.Instance(MODID)
 	public static LeverButtonLights instance;
-
+    public static final LeverButtonLightsTab creativeTab = new LeverButtonLightsTab("Lever Button Lights");
+	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 	}

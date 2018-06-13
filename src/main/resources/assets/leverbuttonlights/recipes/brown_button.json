@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": 
+    [
+        {
+            "item": "minecraft:stained_glass",
+            "data": 12
+        }
+    ],
+
+    "result": 
+    {
+        "item": "leverbuttonlights:brown_button"
+    }
+}

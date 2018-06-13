@@ -1,20 +1,27 @@
 {
     "type": "forge:ore_shaped",
-     "pattern": [
+    "pattern": 
+    [
         "s",
         "g"
-     ],
-     "key": {
-        "s": {
+    ],
+
+    "key": 
+    {
+        "s": 
+        {
             "item": "minecraft:stick"
-         },
-         "g": {
+        },
+
+        "g": 
+        {
             "item": "minecraft:glass"
-         }
-     },
-    "result": {
+        }
+    },
+
+    "result": 
+    {
         "item": "leverbuttonlights:glass_lever",
         "count": 1
-     }
- 
+    }
 }
