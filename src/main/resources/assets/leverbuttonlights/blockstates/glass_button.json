@@ -1,16 +1,20 @@
 {
-  "variants": {
-      "facing=up,powered=false":    { "model": "leverbuttonlights:glass_button", "uvlock": true },
-      "facing=down,powered=false":  { "model": "leverbuttonlights:glass_button", "uvlock": true, "x": 180 },
-      "facing=east,powered=false":  { "model": "leverbuttonlights:glass_button", "uvlock": true, "x": 90, "y": 90 },
-      "facing=west,powered=false":  { "model": "leverbuttonlights:glass_button", "uvlock": true, "x": 90, "y": 270 },
-      "facing=south,powered=false": { "model": "leverbuttonlights:glass_button", "uvlock": true, "x": 90, "y": 180 },
-      "facing=north,powered=false": { "model": "leverbuttonlights:glass_button", "uvlock": true, "x": 90 },
-      "facing=up,powered=true":     { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true },
-      "facing=down,powered=true":   { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true, "x": 180 },
-      "facing=east,powered=true":   { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true, "x": 90, "y": 90 },
-      "facing=west,powered=true":   { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true, "x": 90, "y": 270 },
-      "facing=south,powered=true":  { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true, "x": 90, "y": 180 },
-      "facing=north,powered=true":  { "model": "leverbuttonlights:glass_button_pressed", "uvlock": true, "x": 90 }
-  }
+    "variants": {
+        "facing=down_z,powered=false": { "model": "leverbuttonlights:glass_button", "x": 180, "y": 180 },
+        "facing=down_x,powered=false": { "model": "leverbuttonlights:glass_button", "x": 180, "y": 90 },
+        "facing=up_z,powered=false": { "model": "leverbuttonlights:glass_button" },
+        "facing=up_x,powered=false": { "model": "leverbuttonlights:glass_button", "y": 270 },
+        "facing=east,powered=false": { "model": "leverbuttonlights:glass_button", "x": 90, "y": 90 },
+        "facing=west,powered=false": { "model": "leverbuttonlights:glass_button", "x": 90, "y": 270 },
+        "facing=south,powered=false" : { "model": "leverbuttonlights:glass_button", "x": 90, "y": 180 },
+        "facing=north,powered=false" : { "model": "leverbuttonlights:glass_button", "x": 90 },
+        "facing=down_z,powered=true" : { "model": "leverbuttonlights:glass_button_on", "x": 180, "y": 180 },
+        "facing=down_x,powered=true" : { "model": "leverbuttonlights:glass_button_on", "x": 180, "y": 90 },
+        "facing=up_z,powered=true": { "model": "leverbuttonlights:glass_button_on" },
+        "facing=up_x,powered=true": { "model": "leverbuttonlights:glass_button_on", "y": 270 },
+        "facing=east,powered=true": { "model": "leverbuttonlights:glass_button_on", "x": 90, "y": 90 },
+        "facing=west,powered=true": { "model": "leverbuttonlights:glass_button_on", "x": 90, "y": 270 },
+        "facing=south,powered=true": { "model": "leverbuttonlights:glass_button_on", "x": 90, "y": 180 },
+        "facing=north,powered=true": { "model": "leverbuttonlights:glass_button_on", "x": 90 }
+    }
 }
