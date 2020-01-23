@@ -14,7 +14,8 @@ public class InitBlocks {
 	   	
 	public static final GlassLever GLASS_LEVER = new GlassLever("glass_lever");
 	public static final GlassLever GLASS_LIGHT_BLOCK = new GlassLever("glass_light_block");
-	public static final GlassLever GLASS_BUTTON = new GlassLever("glass_button");
+
+	public static final ColoredLightButton GLASS_BUTTON = new ColoredLightButton("glass_button");
 
 	public static final ColoredLightButton BLUE_BUTTON = new ColoredLightButton("blue_button");
 	public static final ColoredLightButton BLACK_BUTTON = new ColoredLightButton("black_button");

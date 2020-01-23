@@ -10,3 +10,9 @@
 \.gradle/2\.14/taskArtifacts/
 
 \.gradle/
+
+.idea/
+
+.settings/
+
+eclipse/
